@@ -27,8 +27,10 @@ curl -s https://www.chuo-u.ac.jp/academics/faculties/letters/major/socio_info/ne
 curl -s http://sil.tamacc.chuo-u.ac.jp/wp/ -o infocial.html
 curl -s https://www.chuo-u.ac.jp/news/2020/04/48178/ -o corona.html
 
-python3 main.py
+
 python3 sub.py
+python3 main.py
+
 
 
 ### git系2
