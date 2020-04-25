@@ -50,7 +50,7 @@ function createCardElement(channelName){
       }
 let cardXml = `<div class="column-content card">
 <a class="card-link" href="${link}"></a>
-<p calss="card-text"><span class="card-date card-text ${period}">${date.getMonth()}/<strong>${date.getDate()}</strong> ${date.getHours()}:${date.getMinutes()}</span>${spanCategory}
+<p calss="card-text"><span class="card-date card-text ${period}">${date.getMonth()+1}/<strong>${date.getDate()}</strong> ${date.getHours()}:${date.getMinutes()}</span>${spanCategory}
 <p class="card-title card-text">${title}</p>
 </div>`
       let scroll =  document.getElementById(`${channelName}Scroll`);
@@ -82,7 +82,7 @@ function createRenewalElement(){
   }
 let cardXml = `<div class="column-content card">
 <a class="card-link" href="#"></a>
-<p calss="card-text"><span class="card-date card-text ${period}">${dateNow.getMonth()}/<strong>${dateNow.getDate()}</strong> ${dateNow.getHours()}:${dateNow.getMinutes()}</span></p>
+<p calss="card-text"><span class="card-date card-text ${period}">${dateNow.getMonth()+1}/<strong>${dateNow.getDate()}</strong> ${dateNow.getHours()}:${dateNow.getMinutes()}</span></p>
 <p class="card-title card-text">最終更新日時</p>
 </div>`
   let scroll =  document.getElementById(`subScroll`);
