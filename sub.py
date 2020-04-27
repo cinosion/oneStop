@@ -1,4 +1,4 @@
-import chromedriver_binary
+# import chromedriver_binary
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -36,15 +36,17 @@ class ScrapeLoginAuthSite():
         submit_button.submit()
 
         # Mypage window
-        if "https://www.ac04.tamacc.chuo-u.ac.jp/ActiveCampus/index_after.html" in driver.current_url:
+        # if "https://www.ac04.tamacc.chuo-u.ac.jp/ActiveCampus/index_after.html" in driver.current_url:
             # module/MyPage.php
-            print("Mypage window open")
-            driver.get("https://www.ac04.tamacc.chuo-u.ac.jp/ActiveCampus/module/MyPage.php")
-            WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
-            html = driver.page_source
-            with open('cplus.html', 'w', encoding='utf-8') as f:
-                f.write(html)
-            return None
+            # print("Mypage window open")
+        print("don't know Mypage but window open")
+        driver.get("https://www.ac04.tamacc.chuo-u.ac.jp/ActiveCampus/module/MyPage.php")
+        WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
+        html = driver.page_source
+        with open('cplus.html', 'w', encoding='utf-8') as f:
+            f.write(html)
+        print("request succeed")
+        return None
 
     # destractor
     def __del__(self):
