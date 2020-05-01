@@ -18,11 +18,11 @@ see https://opensource.org/licenses/MIT
 
 
 ## 構成
-raspberrypiでcron(cron.sh)
---> htmlとrssを取得(curl)
---> 新着ニュースのhtmlやrssをjs.dictionaryに変換(main.js)
---+ 認証超えてhtmlをjs.dictionaryに変換(sub.js)
---> bridge.jsに日付やニュースなどをまとめた辞書型のオブジェクトを書き込み(ここまでラズパイ) 
--> htmlはgithub.ioでホスト
--> bridge.jsの内容を読み込みカード状に加工(main.js)
--> いい感じに表示(index.html)
+-> raspberrypiでcron(cron.sh)  
+--> htmlとrssを取得(curl)  
+--> 新着ニュースのhtmlやrssをjs.dictionaryに変換(main.js)  
+--+ 認証超えてhtmlをjs.dictionaryに変換(sub.js)  
+--> bridge.jsに日付やニュースなどをまとめた辞書型のオブジェクトを書き込み(ここまでラズパイ)  
+-> htmlはgithub.ioでホスト  
+-> bridge.jsの内容を読み込みカード状に加工(main.js)  
+-> いい感じに表示(index.html)  
