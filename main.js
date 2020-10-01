@@ -61,7 +61,7 @@ let cardXml = `<div class="column-content card">
 
 
 //// メインの処理呼び出し
-createCardElement('cplus');
+try{createCardElement('cplus');} catch(e){};
 createCardElement('top');
 createCardElement('clife');
 createCardElement('bun');
