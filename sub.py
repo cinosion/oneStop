@@ -1,9 +1,10 @@
-# import chromedriver_binary
+import chromedriver_binary
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
 
 #export ID,password to os environment
 #you must delete this row on run
@@ -16,8 +17,10 @@ class ScrapeLoginAuthSite():
         self.password = password
         self.url = "https://www.ac04.tamacc.chuo-u.ac.jp/ActiveCampus/module/Login.php"
         #chrome driver -headless mode
-        options = webdriver.ChromeOptions()
+        options = Options()
+        # options = webdriver.ChromeOptions()
         options.add_argument('--headless')
+        # options.headless = True
         self.driver = webdriver.Chrome(options=options)
         #if you want debug
         #self.driver = webdriver.Chrome()
