@@ -13,6 +13,7 @@ from selene.browsers import BrowserName
 # from selene.api import *
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
 
 #export ID,password to os environment
 #you must delete this row on run
