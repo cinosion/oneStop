@@ -1,3 +1,4 @@
+'''
 import chromedriver_binary
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -5,6 +6,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
+'''
+# from selene import browser
+from selene import config
+from selene.browsers import BrowserName
+# from selene.api import *
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 #export ID,password to os environment
 #you must delete this row on run
@@ -17,13 +25,19 @@ class ScrapeLoginAuthSite():
         self.password = password
         self.url = "https://www.ac04.tamacc.chuo-u.ac.jp/ActiveCampus/module/Login.php"
         #chrome driver -headless mode
-        options = Options()
+        #options = Options()
         # options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         # options.headless = True
-        self.driver = webdriver.Chrome(options=options)
+        #self.driver = webdriver.Chrome(options=options)
         #if you want debug
         #self.driver = webdriver.Chrome()
+
+        config.browser_name = BrowserName.CHROME
+        chrome_option = webdriver.ChromeOptions()
+        chrome_option.add_argument('--headless')
+        chrome_option.add_argument('--disable-gpu')
+        self.driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", chrome_options=chrome_option)
 
     def main(self):
         driver = self.driver
