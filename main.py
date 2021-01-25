@@ -4,12 +4,14 @@
 # コメント&コメントアウト
 
 import json
-import xmltodict
+# import xmltodict
 from pprint import pprint
 from datetime import datetime
 from bs4 import BeautifulSoup
 import re
 import itertools
+# import xml.etree.ElementTree as ET
+from lxml import etree
 
 class Notifinfo:
     def __init__(self, args):
@@ -43,7 +45,7 @@ class Notifinfo:
 
     def tidyTimeYMDC(self):
         # Yyyy年M月D日　コメント
-        red = re.match('^(\S+)', self._untidiedDate).group(1)
+        red = re.match('^(\S+日)', self._untidiedDate).group(1)
         self.tidiedDate = datetime.strptime(red, '%Y年%m月%d日')
         self._setUnixTime()
         self._setStrDate()
@@ -108,19 +110,31 @@ letOutExecuteTime()
 def rssConverter(channelName):
     ## オブジェクトにする
     fileNameRead = f'{channelName}.xml'
-    rssXml = get(fileNameRead)
-    rssDict = xmltodict.parse(rssXml)
+    ftext = ''
+    with open(fileNameRead, mode='r') as f:
+        # f.write('<!ENTITY alpha "&#945;">')
+        ftext = f.read().replace('&alpha;','&#945;').replace('&hellip;','&#8230;')
+    with open(fileNameRead, mode='w') as f:
+        f.write(ftext)
+    # rssXml = get(fileNameRead)
+    # rssDict = xmltodict.parse(rssXml)
+    # tree = ET.parse(fileNameRead)
+    # parser = etree.XMLParser(load_dtd=True, no_network=False)
+    # parser.entity['alpha'] = chr(945)
+    tree = etree.parse(fileNameRead) #, parser=parser
+    root = tree.getroot()
 
-    rssItemsList = rssDict['rss']['channel']['item']
+    # rssItemsList = rssDict['rss']['channel']['item']
+    rssItemsList = root.findall('.//item')
 
     rssInfoList = []
     for item in rssItemsList:
         args = {}
         args['channel'] = str(channelName+'News')
-        args['title'] = item['title']
-        args['link'] = item['link']
-        args['date'] = item['pubDate']
-        args['category'] = item['category']
+        args['title'] = item.find('title').text #item['title']
+        args['link'] = item.find('link').text #item['link']
+        args['date'] = item.find('pubDate').text #item['pubDate']
+        args['category'] = item.find('category').text #item['category']
         notifinfo = Notifinfo(args)
         rssInfoList.append(notifinfo)
 
