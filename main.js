@@ -26,7 +26,7 @@ try{clifeList=clifeFromBridge} catch(e){}
 try{bunList=bunFromBridge} catch(e){}
 try{socinfoList=socinfoFromBridge} catch(e){}
 try{coronaList=coronaFromBridge} catch(e){}
-try{infocialList=infocialFromBridge} catch(e){}
+//try{infocialList=infocialFromBridge} catch(e){}
 
 
 
@@ -67,7 +67,7 @@ createCardElement('clife');
 createCardElement('bun');
 createCardElement('socinfo');
 createCardElement('corona');
-createCardElement('infocial');
+//createCardElement('infocial');
 
 
 
