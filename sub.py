@@ -10,7 +10,6 @@ from selenium.webdriver.chrome.options import Options
 from selene import config
 from selene.browsers import BrowserName
 # from selene.api import *
-from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 #export ID,password to os environment
